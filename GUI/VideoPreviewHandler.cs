@@ -70,7 +70,7 @@ namespace GARbro.GUI
                     Stretch          = Stretch.Uniform,
                     IsMuted          = false,
                     Volume           = Math.Min (Math.Max (lastVolume, 0f), 1f),
-                    ScrubbingEnabled = true
+                    ScrubbingEnabled = false
                 };
 
                 // Enable hardware acceleration if available
@@ -425,10 +425,13 @@ namespace GARbro.GUI
 
         public void Restart ()
         {
-            mediaPlayer.Position = TimeSpan.Zero;
+            mediaPlayer.Stop();
+            positionTimer.Stop();
+
             mediaPlayer.Play();
             IsPlaying = true;
             positionTimer.Start();
+
             PlaybackStateChanged?.Invoke (true);
         }
 
@@ -510,7 +513,7 @@ namespace GARbro.GUI
                     }
                 }, cancellationToken);
 
-                _mainWindow.ShowVideoPreview();
+                //_mainWindow.ShowVideoPreview();
                 _videoControl.LoadVideo (videoData);
             }
             catch (Exception ex) when (ex is ObjectDisposedException || ex is OperationCanceledException)

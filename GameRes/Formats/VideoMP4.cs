@@ -46,7 +46,7 @@ namespace GameRes
             if (type != FTYP)
                 return null;
 
-            if (File.Exists (info.FileName) &&
+            if (!VFS.IsVirtual && File.Exists (info.FileName) &&
                 Extensions.Any (ext => string.Equals (ext,
                     VFS.GetExtension (info.FileName, true), StringComparison.OrdinalIgnoreCase)))
             {

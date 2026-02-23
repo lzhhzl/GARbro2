@@ -10,6 +10,11 @@ namespace GameRes.Formats.Malie
         void DecryptBlock (long block_offset, byte[] buffer, int index);
     }
 
+    public class NoOpDecryptor : IMalieDecryptor
+    {
+        public void DecryptBlock (long block_offset, byte[] buffer, int index) {}
+    }
+
     public class CamelliaDecryptor : IMalieDecryptor
     {
         Camellia   m_enc;

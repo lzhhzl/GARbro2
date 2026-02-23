@@ -123,17 +123,11 @@ namespace GameRes.Formats.Cyberworks
                         input.Read (size_buf, 0, 4);
                         int png_size = BigEndian.ToInt32 (size_buf, 0);
 
-                        byte[] allData;
-                        using (var membuf = new MemoryStream())
+                        BitmapSource frame;
+                        using (var membuf = new MemoryStream (png_size+4))
                         {
                             input.CopyTo (membuf);
-                            allData = membuf.ToArray();
-                        }
-
-                        BitmapSource frame;
-                        using (var membuf = new MemoryStream (allData, allData.Length - png_size, png_size))
-                        {
-                            var decoder = new PngBitmapDecoder (membuf, BitmapCreateOptions.None,
+                            var decoder = new PngBitmapDecoder (new StreamRegion (membuf, membuf.Length-png_size), BitmapCreateOptions.None,
                                                                 BitmapCacheOption.OnLoad);
                             frame = decoder.Frames[0];
                         }

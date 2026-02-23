@@ -24,7 +24,7 @@ You can also create image previews for any archive type by placing images with t
 ## GUI Hotkeys
 
 <table>
-<tr><td><kbd>Enter</kbd></td><td>                   Try to open selected file as archive -OR- playback audio file</td></tr>
+<tr><td><kbd>Enter</kbd></td><td>                   Try to open selected file as archive -OR- playback media file</td></tr>
 <tr><td><kbd>Ctrl</kbd>+<kbd>PgDn</kbd></td><td>    Try to open selected file as archive</td></tr>
 <tr><td><kbd>Ctrl</kbd>+<kbd>E</kbd></td><td>       Open current folder in Windows Explorer</td></tr>
 <tr><td><kbd>Left Arrow</kbd></td><td>              Go back</td></tr>

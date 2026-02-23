@@ -72,7 +72,7 @@ namespace GameRes
             if (!CompareGuid(guid, ASF_HEADER_GUID))
                 return null;
 
-            if (File.Exists (info.FileName) &&
+            if (!VFS.IsVirtual && File.Exists (info.FileName) &&
                 Extensions.Any (ext => string.Equals (ext,
                     VFS.GetExtension (info.FileName, true), StringComparison.OrdinalIgnoreCase)))
             {
